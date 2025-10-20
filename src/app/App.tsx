@@ -1,16 +1,16 @@
-import PrimaryButtonUI from "../shared/ui/Buttons/PrimaryButton"
-import SecondaryButtonUI from "../shared/ui/Buttons/SecondaryButton"
-import InputUI from "../shared/ui/Input/Input"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "../pages/home/home";
+import HeaderApp from "../widgets/Header/ui/HeaderApp";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <PrimaryButtonUI />
-      <SecondaryButtonUI />
-      <InputUI/>
-    </>
-  )
+    <BrowserRouter>
+      <HeaderApp /> 
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
+  );
 }
-
-export default App
