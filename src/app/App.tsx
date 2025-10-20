@@ -1,4 +1,4 @@
-import PrimaryButton from "../shared/ui/Buttons/Button"
+import PrimaryButton from "../shared/ui/Buttons/PrimaryButton"
 
 function App() {
 
