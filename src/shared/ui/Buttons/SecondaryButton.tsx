@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 
 
-export default function SecondaryButton() {
+export default function SecondaryButtonUI() {
     return (
         <>
             <Button type="primary" size='large' className="

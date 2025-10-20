@@ -1,12 +1,14 @@
-import PrimaryButton from "../shared/ui/Buttons/PrimaryButton"
-import SecondaryButton from "../shared/ui/Buttons/SecondaryButton"
+import PrimaryButtonUI from "../shared/ui/Buttons/PrimaryButton"
+import SecondaryButtonUI from "../shared/ui/Buttons/SecondaryButton"
+import InputUI from "../shared/ui/Input/Input"
 
 function App() {
 
   return (
     <>
-      <PrimaryButton />
-      <SecondaryButton />
+      <PrimaryButtonUI />
+      <SecondaryButtonUI />
+      <InputUI/>
     </>
   )
 }
