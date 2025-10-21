@@ -16,7 +16,7 @@ export default function NavMenu() {
                         <NavLink
                             to={link.to}
                             className={({ isActive }) =>
-                                `hover:!text-[#f2f2f2] transition-colors duration-200 ${isActive ? "!text-[#f2f2f2] font-medium" : "!text-[#afa2a2]"
+                                `hover:!text-[#f2f2f2] transition-colors duration-200 ${isActive ? "!text-[#f2f2f2] font-medium border-b-2 border-[#f2f2f2]" : "!text-[#afa2a2] "
                                 }`
                             }
                         >
