@@ -7,12 +7,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <HeaderApp /> 
-      <main>
+      <>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Catalog" element={<CatalogPage />}/>
         </Routes>
-      </main>
+      </>
     </BrowserRouter>
   );
 }

@@ -7,8 +7,8 @@ export default function SecondaryButtonUI() {
             <Button type="primary" size='large' className="
             !bg-[#f2f2f2]
             !text-[#1b1b1b]
-            hover:!bg-[#e6e6e6]
-            active:!bg-[#d9d9d9]
+            hover:!bg-[#d3c8c8]
+            active:!bg-[#b4a1a1]
             !border-none
             !outline-none
             !shadow-none
