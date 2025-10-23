@@ -5,10 +5,10 @@ export default function PrimaryButtonUI() {
     return (
         <>
             <Button type="primary" size='large' className="
-            !bg-[#363333]
-            !text-white
-            hover:!bg-[#302727]
-            active:!bg-[#0f0f0f]
+            !bg-[var(--color-btn-primary)]
+            !text-[var(--color-white)]
+            hover:!bg-[var(--color-btn-primary-hover)]
+            active:!bg-[var(--color-btn-primary-active)]
             !border-none
             !outline-none
             !shadow-none

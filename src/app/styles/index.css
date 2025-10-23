@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./colors.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -6,8 +7,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #493434;
+  color: var(--text-on-dark);
+  background-color: var(--color-bg-root);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,7 +17,7 @@
 }
 
 ::selection {
-  background: #000;
-  color: #fff;      
+  background: var(--color-black);
+  color: var(--color-white);      
 }
 

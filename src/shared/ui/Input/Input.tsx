@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 export default function InputUI() {
   return (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#c5c5c5] w-5 h-5 z-10" />
+  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-gray-1)] w-5 h-5 z-10" />
 
       <input
         placeholder="Search"
@@ -13,21 +13,21 @@ export default function InputUI() {
           pl-10 pr-4 py-2
           rounded-xl
           text-white
-          placeholder:text-[#c5c5c5]
+          placeholder:text-[var(--color-gray-1)]
 
-          bg-[rgba(255,255,255,0.08)]
+          bg-[var(--white-08)]
           backdrop-blur-md
-          border border-[rgba(255,255,255,0.15)]
+          border border-[var(--white-15)]
 
           outline-none
           transition-all duration-300
 
-          hover:bg-[rgba(255,255,255,0.12)]
-          hover:border-[rgba(255,255,255,0.25)]
+          hover:bg-[var(--white-12)]
+          hover:border-[var(--white-25)]
 
-          focus:bg-[rgba(255,255,255,0.15)]
-          focus:border-[rgba(255,255,255,0.3)]
-          focus:shadow-[0_0_15px_rgba(255,255,255,0.1)]
+          focus:bg-[var(--white-15)]
+          focus:border-[var(--white-30)]
+          focus:shadow-[0_0_15px_var(--white-10-shadow)]
         "
       />
     </div>

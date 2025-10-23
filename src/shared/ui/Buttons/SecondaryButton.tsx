@@ -5,10 +5,10 @@ export default function SecondaryButtonUI() {
     return (
         <>
             <Button type="primary" size='large' className="
-            !bg-[#f2f2f2]
-            !text-[#1b1b1b]
-            hover:!bg-[#d3c8c8]
-            active:!bg-[#b4a1a1]
+            !bg-[var(--color-offwhite)]
+            !text-[var(--color-dark-1)]
+            hover:!bg-[var(--color-btn-secondary-hover)]
+            active:!bg-[var(--color-btn-secondary-active)]
             !border-none
             !outline-none
             !shadow-none

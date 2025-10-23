@@ -1,12 +1,16 @@
 import { Container } from "../../../shared/ui/Container";
+import { SeasonDropDown } from "../../../widgets/FilterSidebar/ui/SeasonDropDown";
 import { YearDropDown } from "../../../widgets/FilterSidebar/ui/YearDropDown";
 
 export default function CatalogPage() {
     return (
-        <main className="py-10 bg-[#1b1b1b] pt-[170px]">
+    <main className="py-10 bg-[var(--color-dark-1)] pt-[170px]">
             <Container>
                 <h1 className="text-3xl font-bold mb-6">Catalog</h1>
-                <YearDropDown title="Year"/>
+                <div className="flex flex-col gap-5">
+                    <YearDropDown title="Year" />
+                    <SeasonDropDown title="Season" />
+                </div>
             </Container>
         </main>
     )

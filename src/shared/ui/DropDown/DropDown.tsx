@@ -12,7 +12,7 @@ export default function DropDown({children, title}: DropDownI) {
             </div>
 
             <div
-                className={`overflow-y-scroll transition-all duration-300 ${isOpen ? "max-h-60" : "max-h-0"
+                className={`overflow-y-scroll transition-all duration-300 ${isOpen ? "max-h-65" : "max-h-0"
                     }`}
             >
                 <div className="flex gap-2 mt-2 flex-wrap">

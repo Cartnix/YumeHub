@@ -10,7 +10,7 @@ export default function YearButton({ year, isActive, onClick }: YearButtonI) {
             onClick={() => onClick?.(year)}
             className={`
         p-3 rounded-xl border transition cursor-pointer
-        ${isActive ? "bg-[#f2f2f2] text-[#1b1b1b] border-[#cfaaaa]" : "bg-transparent text-[#c5c5c5] border-[#444] hover:bg-[#f2f2f2] hover:text-[#1b1b1b] focus:bg-[#f2f2f2] focus:text-[#1b1b1b]"}
+    ${isActive ? "bg-[var(--color-offwhite)] text-[var(--color-dark-1)] border-[var(--color-border-active)]" : "bg-transparent text-[var(--color-gray-1)] border-[var(--color-gray-3)] hover:bg-[var(--color-offwhite)] hover:text-[var(--color-dark-1)] focus:bg-[var(--color-offwhite)] focus:text-[var(--color-dark-1)]"}
       `}
         >
             {year}

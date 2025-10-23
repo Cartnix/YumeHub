@@ -1,0 +1,27 @@
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-offwhite: #f2f2f2;
+  --text-on-dark: rgba(255, 255, 255, 0.87);
+  --color-dark-1: #1b1b1b;
+
+  --color-gray-1: #c5c5c5;
+  --color-gray-2: #afa2a2;
+  --color-gray-3: #444444;
+
+  --color-bg-root: #493434;
+
+  --color-btn-primary: #363333;
+  --color-btn-primary-hover: #302727;
+  --color-btn-primary-active: #0f0f0f;
+  --color-btn-secondary-hover: #d3c8c8;
+  --color-btn-secondary-active: #b4a1a1;
+  --color-border-active: #cfaaaa;
+
+  --white-08: rgba(255,255,255,0.08);
+  --white-12: rgba(255,255,255,0.12);
+  --white-15: rgba(255,255,255,0.15);
+  --white-25: rgba(255,255,255,0.25);
+  --white-30: rgba(255,255,255,0.3);
+  --white-10-shadow: rgba(255,255,255,0.1);
+}
