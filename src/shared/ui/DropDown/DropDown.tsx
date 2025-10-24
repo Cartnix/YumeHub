@@ -8,7 +8,7 @@ export default function DropDown({children, title}: DropDownI) {
         <div className="flex flex-col gap-2 max-w-1/6">
             <div className="flex items-center justify-between border-b-amber-50 border-b pb-2" onClick={() => setOpen(prev => !prev)}>
                 <h2 className="text-2xl">{title}</h2>
-                {isOpen ? <ChevronDown className="w-6 h-6" /> : <ChevronUp className="w-6 h-6" />}
+                {isOpen ? <ChevronUp className="w-6 h-6" /> : <ChevronDown className="w-6 h-6" />}
             </div>
 
             <div

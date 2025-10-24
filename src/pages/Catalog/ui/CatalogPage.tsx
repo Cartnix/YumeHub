@@ -1,4 +1,5 @@
 import { Container } from "../../../shared/ui/Container";
+import { GenreDropDown } from "../../../widgets/FilterSidebar/ui/GenreDropDown";
 import { SeasonDropDown } from "../../../widgets/FilterSidebar/ui/SeasonDropDown";
 import { YearDropDown } from "../../../widgets/FilterSidebar/ui/YearDropDown";
 
@@ -10,6 +11,7 @@ export default function CatalogPage() {
                 <div className="flex flex-col gap-5">
                     <YearDropDown title="Year" />
                     <SeasonDropDown title="Season" />
+                    <GenreDropDown title="Genre"/>
                 </div>
             </Container>
         </main>

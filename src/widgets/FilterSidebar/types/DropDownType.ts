@@ -1,3 +1,3 @@
-export interface YearDropDownI {
+export interface RadioDropDownI {
     title: string
 }
