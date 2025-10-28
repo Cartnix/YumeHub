@@ -11,7 +11,7 @@ export function YearDropDown({ title }: RadioDropDownI) {
         <DropDown title={title}>
             <div className="flex gap-3 mt-2 flex-wrap">
                 {YEARS.map(item => (
-                    <YearButton year={item} />
+                    <YearButton key={item} year={item} />
                 ))}
             </div>
         </DropDown>

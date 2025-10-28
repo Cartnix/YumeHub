@@ -5,7 +5,7 @@ import type { DropDownI } from "../types/DropDownTypes";
 export default function DropDown({children, title}: DropDownI) {
     const[isOpen, setOpen] = useState<boolean>(false)
     return (
-        <div className="flex flex-col gap-2 max-w-1/6">
+        <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between border-b-amber-50 border-b pb-2" onClick={() => setOpen(prev => !prev)}>
                 <h2 className="text-2xl">{title}</h2>
                 {isOpen ? <ChevronUp className="w-6 h-6" /> : <ChevronDown className="w-6 h-6" />}

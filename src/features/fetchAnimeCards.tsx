@@ -18,7 +18,7 @@ export default function useFetchAnimeCards() {
                 const clearData: AnimeCardI[] = json.data.map((item: any) => ({
                     title: item.title,
                     year: parseInt(item.year) || 0,
-                    image: item.images?.jpg?.image_url || "",
+                    background: item.images?.jpg?.image_url || "",
                 }))
                 console.log(clearData)
                 setData(clearData)
