@@ -1,4 +1,4 @@
-import type { RadioDropDownI } from "../types/DropDownType";
+import type { RadioDropDownI } from "../model/types/DropDownType";
 import DropDown from "../../../shared/ui/DropDown/DropDown";
 import { Seasons } from "../model/SeasonFilterConstants";
 import { useState } from "react";

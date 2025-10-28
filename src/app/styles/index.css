@@ -20,4 +20,8 @@
   background: var(--color-black);
   color: var(--color-white);      
 }
+body{
+  background-color: var(--color-dark-1);
+  min-height: 100vh;
+}
 
