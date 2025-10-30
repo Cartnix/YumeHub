@@ -20,6 +20,32 @@
   background: var(--color-black);
   color: var(--color-white);      
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-1);
+  border-left: 1px solid var(--white-08);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--white-12);
+  border-radius: 5px;
+  border: 2px solid var(--color-dark-1);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--white-25);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--white-30);
+}
+
 body{
   background-color: var(--color-dark-1);
   min-height: 100vh;
