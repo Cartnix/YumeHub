@@ -3,35 +3,56 @@ import type { AnimeCardI } from "../entities/AnimeCard/model/AnimeCardI"
 
 export default function useFetchAnimeCards() {
     const [data, setData] = useState<AnimeCardI[]>([])
-    const [error, setError] = useState<null | Error>(null)
-    const [isLoading, setLoading] = useState<boolean>(false)
+    const [page, setPage] = useState(1)
+    const [hasMore, setHasMore] = useState(true)
+    const [isLoading, setLoading] = useState(false)
+    const [error, setError] = useState<Error | null>(null)
 
     useEffect(() => {
-        setLoading(true)
-        const AnimeFetch = async () => {
+        let ignore = false
+
+        const fetchAnime = async () => {
             try {
-                const res = await fetch("https://api.jikan.moe/v4/anime")
-                if (!res.ok) {
-                    throw new Error("Connection error!")
-                }
+                setLoading(true)
+                const res = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
+                if (!res.ok) throw new Error("Failed to fetch anime")
+
                 const json = await res.json()
-                const clearData: AnimeCardI[] = json.data.map((item: any) => ({
+
+                if (ignore) return
+
+                const newData: AnimeCardI[] = json.data.map((item: any) => ({
                     title: item.title,
-                    year: parseInt(item.year) || "",
+                    year: item.aired?.prop?.from?.year || 0,
                     background: item.images?.jpg?.image_url || "",
                     genre: item.genres?.[0]?.name || "Unknown",
+                    desc: item.synopsis || "",
                 }))
-                console.log(clearData)
-                setData(clearData)
-            } catch(error)
-            {
-                setError(error as Error)
-            } finally{
+
+                setData(prev => {
+                    const unique = newData.filter(item => !prev.some(p => p.title === item.title))
+                    return [...prev, ...unique]
+                })
+
+                setHasMore(Boolean(json.pagination?.has_next_page))
+            } catch (err) {
+                setError(err as Error)
+            } finally {
                 setLoading(false)
             }
         }
-        AnimeFetch()
-    }, [])
 
-    return { data, error, isLoading }
+        fetchAnime()
+
+        return () => {
+            ignore = true
+        }
+    }, [page])
+
+
+    const showMore = () => {
+        if (hasMore && !isLoading) setPage(prev => prev + 1)
+    }
+
+    return { data, isLoading, error, hasMore, showMore }
 }
