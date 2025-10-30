@@ -42,7 +42,7 @@ const AnimeCardsGrid: FC<Props> = ({ animes, isLoading, hasMore, showMore }) => 
       {hasMore && (
         <div className="flex justify-center mt-6">
           <button
-            className="cursor-pointer w-full px-4 py-2 rounded-xl bg-[var(--color-offwhite)] text-[var(--color-dark-1)] hover:bg-[var(--color-btn-secondary-hover)] transition-colors"
+            className="cursor-pointer w-full font-bold px-4 py-4 rounded-xl bg-[var(--color-offwhite)] text-[var(--color-dark-1)] hover:bg-[var(--color-btn-secondary-hover)] transition-colors"
             onClick={showMore}
           >
             Show more
