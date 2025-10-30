@@ -1,20 +1,12 @@
-import AnimeCard from "../../../entities/AnimeCard/ui/AnimeCard";
-import useAnimeCatalog from "../model/useAnimeCatalog"
+import useAnimeCatalog from "../model/useAnimeCatalog";
+import AnimeCardsGrid from "./AnimeCardsGrid";
 
-export default function AnimeCardWrapper()
-{
-    const {animes, isLoading} = useAnimeCatalog();
+export default function AnimeCardWrapper() {
+    const { animes, isLoading, hasMore, showMore } = useAnimeCatalog();
 
     return (
-        <div className="flex-wrap gap-4 flex">
-            {animes.map(item => (
-                <AnimeCard 
-                key={item.title}
-                title={item.title}
-                year={item.year}
-                desc={item.desc}
-                background={item.background}/>
-            ))}
+        <div className="w-full">
+            <AnimeCardsGrid animes={animes} isLoading={isLoading} hasMore={hasMore} showMore={showMore} />
         </div>
-    )
+    );
 }

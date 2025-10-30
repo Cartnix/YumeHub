@@ -1,14 +1,14 @@
 import type { AnimeCardI } from "../model/AnimeCardI";
 
-export default function AnimeCard({ title, year, background }: AnimeCardI) {
+export default function AnimeCard({ title, year, background, genre }: AnimeCardI) {
     return (
-        <article 
+        <article
             style={{
                 backgroundImage: `url(${background})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-            }} 
+            }}
             className="
                 relative
                 h-[350px] w-[250px]
@@ -28,7 +28,7 @@ export default function AnimeCard({ title, year, background }: AnimeCardI) {
                 transition-opacity duration-300
                 group-hover:via-black/40
             "/>
-            
+
             <div className="
                 absolute bottom-0 left-0 right-0
                 p-4
@@ -45,7 +45,8 @@ export default function AnimeCard({ title, year, background }: AnimeCardI) {
                     {title}
                 </h2>
                 <div className="
-                    inline-block
+                flex justify-between items-center">
+                    <div className="
                     px-3 py-1
                     rounded-lg
                     bg-white/10
@@ -53,7 +54,15 @@ export default function AnimeCard({ title, year, background }: AnimeCardI) {
                     text-sm font-medium
                     text-white/90
                 ">
-                    {year}
+                        {year}
+                    </div>
+                    <div className="
+                    backdrop-blur-sm
+                    text-sm font-medium
+                    text-white/90
+                    ">
+                        {genre}
+                    </div>
                 </div>
             </div>
         </article>
