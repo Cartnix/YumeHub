@@ -5,4 +5,6 @@ export const Genres = [
     "Horror",
     "Action",
     "Adventure",
+    "Romance",
+    "Mystery",
 ]
