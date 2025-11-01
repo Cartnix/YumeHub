@@ -21,6 +21,8 @@ export default function useFetchAnimeCards() {
 
                 if (ignore) return
 
+                console.log(json)
+
                 const newData: AnimeCardI[] = json.data.map((item: any) => ({
                     title: item.title,
                     year: item.aired?.prop?.from?.year || 0,

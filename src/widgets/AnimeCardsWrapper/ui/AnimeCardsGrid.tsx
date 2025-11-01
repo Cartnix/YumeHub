@@ -2,6 +2,7 @@ import type { FC } from "react";
 import AnimeCard from "../../../entities/AnimeCard/ui/AnimeCard";
 import type { AnimeCardI } from "../../../entities/AnimeCard/model/AnimeCardI";
 import LoaderOverlay from "../../../shared/ui/Loader/LoaderOverlay";
+import { Link } from "react-router-dom";
 
 interface Props {
     animes: AnimeCardI[];
@@ -15,14 +16,15 @@ const AnimeCardsGrid: FC<Props> = ({ animes, isLoading, hasMore, showMore }) => 
         <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {animes.map((a) => (
-                    <AnimeCard
-                        key={a.title}
-                        title={a.title}
-                        year={a.year}
-                        desc={a.desc}
-                        background={a.background}
-                        genre={a.genre}
-                    />
+                    <Link key={a.id} to={`/anime/${a.id}`}>
+                        <AnimeCard
+                            title={a.title}
+                            year={a.year}
+                            desc={a.desc}
+                            background={a.background}
+                            genre={a.genre}
+                        />
+                    </Link>
                 ))}
             </div>
 

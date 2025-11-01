@@ -3,10 +3,9 @@ import SocialIcons from "../../shared/ui/Icons/SocialWrapper";
 
 export default function FooterApp() {
     return (
-        <footer className="mt-8 border-t border-t-[var(--color-gray-1)] py-8">
+        <footer className="mt-8 border-t border-t-[var(--color-gray-1)] h-[120px] flex items-center">
             <Container>
-                <div className="flex justify-between items-center">
-                    <span>CartnixDev.com</span>
+                <div className="flex justify-center items-center">
                     <SocialIcons />
                 </div>
             </Container>
