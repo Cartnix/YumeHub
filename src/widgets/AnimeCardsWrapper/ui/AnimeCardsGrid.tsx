@@ -18,6 +18,7 @@ const AnimeCardsGrid: FC<Props> = ({ animes, isLoading, hasMore, showMore }) => 
                 {animes.map((a) => (
                     <Link key={a.id} to={`/anime/${a.id}`}>
                         <AnimeCard
+                            id={a.id}
                             title={a.title}
                             year={a.year}
                             desc={a.desc}

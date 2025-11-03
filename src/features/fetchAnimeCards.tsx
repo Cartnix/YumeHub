@@ -24,6 +24,7 @@ export default function useFetchAnimeCards() {
                 console.log(json)
 
                 const newData: AnimeCardI[] = json.data.map((item: any) => ({
+                    id: item.mal_id,
                     title: item.title,
                     year: item.aired?.prop?.from?.year || 0,
                     background: item.images?.jpg?.image_url || "",
@@ -32,7 +33,7 @@ export default function useFetchAnimeCards() {
                 }))
 
                 setData(prev => {
-                    const unique = newData.filter(item => !prev.some(p => p.title === item.title))
+                    const unique = newData.filter(item => !prev.some(p => p.id === item.id))
                     return [...prev, ...unique]
                 })
 

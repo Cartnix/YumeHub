@@ -1,6 +1,6 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
-import type { DropDownI } from "../types/DropDownTypes";
+import type { DropDownI } from "../../types/DropDownTypes";
 
 export default function DropDown({children, title}: DropDownI) {
     const[isOpen, setOpen] = useState<boolean>(false)

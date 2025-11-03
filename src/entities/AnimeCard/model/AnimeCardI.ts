@@ -4,5 +4,5 @@ export interface AnimeCardI{
     desc?: string;
     genre: string;
     background: string;
-    id?: number;
+    id: number;  
 }
