@@ -1,10 +1,14 @@
 import { Button } from 'antd';
 
+interface PrimaryButtonI {
+    children: React.ReactNode
+}
 
-export default function PrimaryButtonUI() {
+export default function PrimaryButtonUI({children}: PrimaryButtonI) {
     return (
         <>
             <Button type="primary" size='large' className="
+            flex justify-center gap-3 items-center
             !bg-[var(--color-btn-primary)]
             !text-[var(--color-white)]
             hover:!bg-[var(--color-btn-primary-hover)]
@@ -19,7 +23,7 @@ export default function PrimaryButtonUI() {
             transition-colors
             duration-200
         ">
-                Log in
+                {children}
             </Button>
         </>
     );

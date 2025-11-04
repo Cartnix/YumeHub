@@ -14,7 +14,7 @@ interface Props {
 const AnimeCardsGrid: FC<Props> = ({ animes, isLoading, hasMore, showMore }) => {
     return (
         <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4">
                 {animes.map((a) => (
                     <Link key={a.id} to={`/anime/${a.id}`}>
                         <AnimeCard
