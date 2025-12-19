@@ -1,7 +1,11 @@
-import { Button } from 'antd';
+import { Button, type ButtonProps } from 'antd';
 
 
-export default function SecondaryButtonUI() {
+interface SecondaryButtonI extends ButtonProps{
+    children: React.ReactNode
+}
+
+export default function SecondaryButtonUI({children, ...props}: SecondaryButtonI) {
     return (
         <>
             <Button type="primary" size='large' className="
@@ -18,8 +22,8 @@ export default function SecondaryButtonUI() {
             rounded-xl
             transition-colors
             duration-200
-        ">
-                Get Started
+        " {...props}>
+                {children}
             </Button>
         </>
     );

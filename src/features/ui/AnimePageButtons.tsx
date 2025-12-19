@@ -19,7 +19,7 @@ export default function AnimePageButtons() {
                 <span className="font-bold">Watched</span>
             </PrimaryButtonUI>
 
-            <PrimaryButtonUI className="last:ml-auto">
+            <PrimaryButtonUI>
                 <Plus></Plus>
                 <span className="font-bold">Add To Collection</span>
             </PrimaryButtonUI>

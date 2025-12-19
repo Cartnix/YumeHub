@@ -1,10 +1,10 @@
-import { Button } from 'antd';
+import { Button, type ButtonProps } from 'antd';
 
-interface PrimaryButtonI {
+interface PrimaryButtonI extends ButtonProps{
     children: React.ReactNode
 }
 
-export default function PrimaryButtonUI({children}: PrimaryButtonI) {
+export default function PrimaryButtonUI({children, ...props}: PrimaryButtonI) {
     return (
         <>
             <Button type="primary" size='large' className="
@@ -22,7 +22,7 @@ export default function PrimaryButtonUI({children}: PrimaryButtonI) {
             rounded-xl
             transition-colors
             duration-200
-        ">
+        " {...props}>
                 {children}
             </Button>
         </>
