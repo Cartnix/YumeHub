@@ -1,16 +1,26 @@
-import { Search } from "lucide-react"; 
+import { Search } from "lucide-react";
+import type { InputHTMLAttributes } from "react";
 
-export default function InputUI() {
+interface InputI extends InputHTMLAttributes<HTMLInputElement> {
+  placeholder: string,
+  type: "email" | "password" | "text"
+  withIcon?: boolean
+}
+
+export default function InputUI({ placeholder, type = "text", withIcon = false, ...props }: InputI) {
   return (
     <div className="relative w-full">
-  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-gray-1)] w-5 h-5 z-10" />
-
+      {withIcon && (
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-gray-1)] w-5 h-5 z-10" />
+      )}
       <input
-        placeholder="Search"
-        type="text"
-        className="
+        {...props}
+        placeholder={placeholder}
+        type={type}
+        className={`
+          ${withIcon ? "pl-10" : "pl-5"}
           w-full
-          pl-10 pr-4 py-2
+          py-2
           rounded-xl
           text-white
           placeholder:text-[var(--color-gray-1)]
@@ -28,7 +38,7 @@ export default function InputUI() {
           focus:bg-[var(--white-15)]
           focus:border-[var(--white-30)]
           focus:shadow-[0_0_15px_var(--white-10-shadow)]
-        "
+        `}
       />
     </div>
   );

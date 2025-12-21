@@ -21,7 +21,7 @@ export default function HeaderApp() {
                 <div className="flex gap-6 items-center py-6">
                     <LogoIcon />
                     <NavMenu />
-                    <InputUI />
+                    <InputUI placeholder="Seacch..." type="text" withIcon/>
                     <div className="flex gap-3">
                         <PrimaryButtonUI onClick={() => setOpen(true)}>
                             Log In
