@@ -1,111 +1,86 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { FaGithub, FaGoogle } from "react-icons/fa";
-import InputUI from "../../../shared/ui/Input/Input";
+import AuthSocialLinks from "./AuthSocialLinks";
+import Registration from "../../../features/registration/ui/Registration";
+import Authorization from "../../../features/auth/ui/Authorization";
 
 interface AuthModalProps {
     isOpen: boolean;
     onClose: () => void;
+    initialMode?: "login" | "register";
 }
 
-export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
-    const modalRoot = document.getElementById("modal-root");
-    if (!modalRoot || !isOpen) return null;
+export default function AuthModal({ isOpen, onClose, initialMode = "login" }: AuthModalProps) {
+    const [mode, setMode] = useState<"login" | "register">(initialMode);
 
     useEffect(() => {
-        const scrollBarWidth = window.innerWidth - document.body.offsetWidth;
+        setMode(initialMode);
+    }, [initialMode]);
 
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const scrollBarWidth = window.innerWidth - document.body.offsetWidth;
         document.body.style.overflow = "hidden";
         document.body.style.paddingRight = `${scrollBarWidth}px`;
 
         const fixedElements = document.querySelectorAll<HTMLElement>('header, .fixed');
-        fixedElements.forEach(el => {
-            el.style.paddingRight = `${scrollBarWidth}px`;
-        });
+        fixedElements.forEach(el => el.style.paddingRight = `${scrollBarWidth}px`);
 
         return () => {
             document.body.style.overflow = "";
             document.body.style.paddingRight = "";
-            fixedElements.forEach(el => {
-                el.style.paddingRight = "";
-            });
+            fixedElements.forEach(el => el.style.paddingRight = "");
         };
-    }, []);
+    }, [isOpen]);
 
+    const modalRoot = document.getElementById("modal-root");
+    if (!modalRoot || !isOpen) return null;
 
     return createPortal(
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 overflow-y-auto"
             onClick={onClose}
         >
             <form
-                className="relative w-[360px] rounded-2xl border border-white/10 bg-[var(--color-dark-1)] p-6 shadow-2xl"
+                className="
+                relative w-[400px] max-h-[90dvh] overflow-y-auto 
+                rounded-2xl borde bg-[var(--color-dark-1)] 
+                py-6 px-9
+                border-[var(--white-30)]
+                shadow-[0_0_15px_var(--white-10-shadow)]"
+                onSubmit={(e) => e.preventDefault()}
                 onClick={(e) => e.stopPropagation()}
             >
                 <button
                     type="button"
                     onClick={onClose}
-                    className="absolute top-3 right-3 text-white/50 hover:text-white transition text-xl font-bold"
+                    className="cursor-pointer absolute top-7 right-5 text-white/60 hover:text-white transition"
                 >
-                    ×
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <path d="M18 6L6 18" />
+                        <path d="M6 6l12 12" />
+                    </svg>
                 </button>
 
-                <h2 className="mb-6 text-xl font-semibold text-white text-center">
-                    Create an account
-                </h2>
+                {mode === "login" && (
+                    <Authorization switchToRegistration={() => setMode("register")} />
+                )}
 
-                <div className="space-y-4">
-                    <div>
-                        <label className="mb-1 block text-xs text-white/50">Username</label>
-                        <InputUI placeholder="Enter your name" type="text" />
-                    </div>
+                {mode === "register" && (
+                    <Registration switchToAuth={() => setMode("login")} />
+                )}
 
-                    <div>
-                        <label className="mb-1 block text-xs text-white/50">Email</label>
-                        <InputUI placeholder="Enter your email" type="email" />
-                    </div>
-
-                    <div>
-                        <label className="mb-1 block text-xs text-white/50">Password</label>
-                        <InputUI placeholder="Enter your password" type="password" />
-                    </div>
-                </div>
-
-                <button
-                    type="submit"
-                    className="mt-6 w-full rounded-lg bg-[var(--color-btn-primary)] py-2 text-sm font-medium text-white transition hover:bg-[var(--color-btn-primary-hover)] active:bg-[var(--color-btn-primary-active)] cursor-pointer"
-                >
-                    Sign up
-                </button>
-
-                <p className="mt-4 text-center text-xs text-white/40">
-                    Already have an account?{" "}
-                    <span className="cursor-pointer text-white hover:underline">Log in</span>
-                </p>
-
-                <div className="my-6 flex items-center gap-3 text-xs text-white/40">
-                    <span className="h-px flex-1 bg-white/10" />
-                    or
-                    <span className="h-px flex-1 bg-white/10" />
-                </div>
-
-                <div className="space-y-4">
-                    <button
-                        type="button"
-                        className="flex justify-center items-center gap-4 w-full rounded-lg border border-white/15 bg-white/5 py-2 text-sm text-white transition hover:bg-white/10 active:bg-white/15"
-                    >
-                        <FaGithub className="text-xl" />
-                        <span>Continue with GitHub</span>
-                    </button>
-
-                    <button
-                        type="button"
-                        className="flex justify-center items-center gap-4 w-full rounded-lg border border-white/15 bg-white/5 py-2 text-sm text-white transition hover:bg-white/10 active:bg-white/15"
-                    >
-                        <FaGoogle className="text-xl" />
-                        <span>Continue with Google</span>
-                    </button>
-                </div>
+                <AuthSocialLinks />
             </form>
         </div>,
         modalRoot
