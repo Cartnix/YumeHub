@@ -6,18 +6,18 @@ import { YearDropDown } from "../../../widgets/FilterSidebar/ui/YearDropDown";
 
 export default function CatalogPage() {
     return (
-        <main className="py-10 pt-[170px]">
+        <main className="pt-[170px]">
             <Container>
                 <h1 className="text-3xl font-bold mb-6">Catalog</h1>
-                <div className="flex gap-8">
-                    <aside className="w-64 flex-shrink-0">
+                <div className="grid grid-cols-[200px_1fr]">
+                    <aside>
                         <div className="flex flex-col gap-6">
                             <YearDropDown title="Year" />
                             <SeasonDropDown title="Season" />
                             <GenreDropDown title="Genre" />
                         </div>
                     </aside>
-                    <section className="flex-grow min-w-0">
+                    <section className="ml-6">
                         <AnimeCardWrapper />
                     </section>
                 </div>

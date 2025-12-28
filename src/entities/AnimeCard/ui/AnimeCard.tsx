@@ -11,7 +11,7 @@ export default function AnimeCard({ title, year, background, genre, desc }: Anim
             }}
             className="
                 relative
-                h-[350px] w-[250px]
+                h-[350px] w-full
                 rounded-2xl
                 overflow-hidden
                 transition-all duration-300 ease-in-out

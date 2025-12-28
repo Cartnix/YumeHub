@@ -3,6 +3,7 @@ import { Container } from "../../../shared/ui/Container"
 import useFetchAnimeById from "../../../features/fetchAnimeById"
 import { Star } from "lucide-react"
 import AnimePageButtons from "../../../widgets/AnimePageWidgets/AnimePageButtons"
+import Overview from "./Overview"
 
 
 export default function AnimePage() {
@@ -45,24 +46,11 @@ export default function AnimePage() {
 
                             <AnimePageButtons />
 
-                            {/* <div className="flex flex-wrap gap-4 text-sm">
-                                <span className="px-3 py-1 rounded-lg bg-white/10 backdrop-blur-sm">
-                                    Year: {anime.year || "—"}
-                                </span>
-                                <span className="px-3 py-1 rounded-lg bg-white/10 backdrop-blur-sm">
-                                    Genre: {anime.genre}
-                                </span>
-                                <span className="px-3 py-1 rounded-lg bg-white/10 backdrop-blur-sm">
-                                    Episodes: {anime.episodes || "?"}
-                                </span>
-                            </div>
-
-                            <p className="text-white/80 leading-relaxed text-lg">
-                                {anime.desc || "No description available."}
-                            </p> */}
                         </div>
                     </div>
                 )}
+
+                <Overview data={anime}/>
             </Container>
         </main>
     )
