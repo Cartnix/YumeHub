@@ -2,6 +2,7 @@ import { Container } from "../../../shared/ui/Container";
 import AnimeCardWrapper from "../../../widgets/AnimeCardsWrapper/ui/AnimeCardsWrapper";
 import { GenreDropDown } from "../../../widgets/FilterSidebar/ui/GenreDropDown";
 import { SeasonDropDown } from "../../../widgets/FilterSidebar/ui/SeasonDropDown";
+import { StudioDropDown } from "../../../widgets/FilterSidebar/ui/StudioDropDown";
 import { YearDropDown } from "../../../widgets/FilterSidebar/ui/YearDropDown";
 
 export default function CatalogPage() {
@@ -15,6 +16,7 @@ export default function CatalogPage() {
                             <YearDropDown title="Year" />
                             <SeasonDropDown title="Season" />
                             <GenreDropDown title="Genre" />
+                            <StudioDropDown title="Studio"/>
                         </div>
                     </aside>
                     <section className="ml-6">
