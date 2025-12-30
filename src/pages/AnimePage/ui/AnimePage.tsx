@@ -3,7 +3,7 @@ import { Container } from "../../../shared/ui/Container"
 import useFetchAnimeById from "../../../features/fetchAnimeById"
 import { Star } from "lucide-react"
 import AnimePageButtons from "../../../widgets/AnimePageWidgets/AnimePageButtons"
-import Overview from "./Overview"
+import DetailsMenu from "./DetailsMenu"
 
 
 export default function AnimePage() {
@@ -50,7 +50,7 @@ export default function AnimePage() {
                     </div>
                 )}
 
-                <Overview data={anime}/>
+                <DetailsMenu data={anime}/>
             </Container>
         </main>
     )

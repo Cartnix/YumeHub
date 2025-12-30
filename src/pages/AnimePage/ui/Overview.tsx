@@ -21,7 +21,7 @@ export default function Overview({ data }: Props) {
   ]
 
   return (
-    <div className="flex gap-8 py-15">
+    <div className="flex gap-8">
       <div className="max-w-1/4">
         <h2 className="mb-6 text-2xl font-bold">Details</h2>
         <div className="flex flex-col gap-3">

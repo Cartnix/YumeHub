@@ -35,7 +35,7 @@ export default function useFetchAnimeById(id: string): UseFetchAnimeResult {
         setAnime({
           id: parseInt(id),
           title: data.title || "Unknown Title",
-          year: data.aired?.prop?.from?.year || null,  // null вместо 0
+          year: data.aired?.prop?.from?.year || null, 
           background: data.images?.jpg?.large_image_url || data.images?.jpg?.image_url || "",
           type: data.type || "Unknown",
           episodes: data.episodes || 0,
