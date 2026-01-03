@@ -3,7 +3,7 @@ import useFetchAnimeCards from "../../../features/fetchAnimeCards"
 
 export default function useAnimeCatalog() {
     const { data, error, isLoading, hasMore: remoteHasMore, showMore: fetchMore } = useFetchAnimeCards()
-    const [visibleCount, setVisibleCount] = useState(12)
+    const [visibleCount, setVisibleCount] = useState(24)
 
     const showMore = () => {
         const next = visibleCount + 12

@@ -17,17 +17,19 @@ export default function useFetchAnimeById(id: string): UseFetchAnimeResult {
 
     let isCancelled = false
 
-    setLoading(true)
-    setError(null)
+    const fetchAnime = async () => {
+      try {
+        setLoading(true)
+        setError(null)
 
-    fetch(`https://api.jikan.moe/v4/anime/${id}`)
-      .then(res => {
+        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`)
+        
         if (!res.ok) {
           throw new Error(`Anime not found (${res.status})`)
         }
-        return res.json()
-      })
-      .then(json => {
+
+        const json = await res.json()
+
         if (isCancelled) return
 
         const data = json.data
@@ -51,18 +53,19 @@ export default function useFetchAnimeById(id: string): UseFetchAnimeResult {
           duration: data.duration || "Unknown",
           desc: data.synopsis || "No description available",
         })
-      })
-      .catch(err => {
+      } catch (err) {
         if (!isCancelled) {
-          setError(err.message || "Failed to fetch anime")
+          setError(err instanceof Error ? err.message : "Failed to fetch anime")
           setAnime(null)
         }
-      })
-      .finally(() => {
+      } finally {
         if (!isCancelled) {
           setLoading(false)
         }
-      })
+      }
+    }
+
+    fetchAnime()
 
     return () => {
       isCancelled = true
