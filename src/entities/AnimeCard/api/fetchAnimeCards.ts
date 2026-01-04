@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import type { AnimeCardI } from "../entities/AnimeCard/model/AnimeCardI"
+import type { AnimeCardI } from "../types/AnimeCardI"
 
 export default function useFetchAnimeCards() {
     const [data, setData] = useState<AnimeCardI[]>([])

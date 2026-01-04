@@ -1,5 +1,5 @@
 import { useState } from "react"
-import useFetchAnimeCards from "../../../features/fetchAnimeCards"
+import useFetchAnimeCards from "../../../entities/AnimeCard/api/fetchAnimeCards"
 
 export default function useAnimeCatalog() {
     const { data, error, isLoading, hasMore: remoteHasMore, showMore: fetchMore } = useFetchAnimeCards()

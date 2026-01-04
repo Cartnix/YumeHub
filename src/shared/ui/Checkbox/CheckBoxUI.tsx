@@ -28,7 +28,7 @@ export default function CheckBoxUI({
             `}
             >
                 <svg
-                    className={`h-3.5 w-3.5 transition-opacity ${checked ? "opacity-100" : "opacity-0"}`}
+                    className={`h-4 w-4 transition-opacity ${checked ? "opacity-100" : "opacity-0"}`}
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="black"

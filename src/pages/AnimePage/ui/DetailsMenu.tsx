@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Overview from './Overview';
-import type { OverviewProps } from '../model/OverviewI';
+import type { OverviewProps } from '../types/OverviewI';
 
 interface Props {
   data: OverviewProps | null

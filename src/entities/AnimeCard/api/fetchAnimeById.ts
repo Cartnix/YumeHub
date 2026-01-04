@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import type { AnimePageI } from "../pages/AnimePage/model/AnimePageI"
+import type { AnimePageI } from "../../../pages/AnimePage/types/AnimePageI"
 
 interface UseFetchAnimeResult {
   anime: AnimePageI | null

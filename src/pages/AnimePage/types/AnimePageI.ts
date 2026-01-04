@@ -1,4 +1,4 @@
-import type { AnimeCardI } from "../../../entities/AnimeCard/model/AnimeCardI";
+import type { AnimeCardI } from "../../../entities/AnimeCard/types/AnimeCardI";
 
 export interface AnimePageI extends AnimeCardI{
     rating: number | null;

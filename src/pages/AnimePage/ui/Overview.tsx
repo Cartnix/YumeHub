@@ -1,4 +1,4 @@
-import type { OverviewProps } from "../model/OverviewI"
+import type { OverviewProps } from "../types/OverviewI"
 
 interface Props {
   data: OverviewProps | null

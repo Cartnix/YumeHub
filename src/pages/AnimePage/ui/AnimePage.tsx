@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom"
 import { Container } from "../../../shared/ui/Container"
-import useFetchAnimeById from "../../../features/fetchAnimeById"
 import { Star } from "lucide-react"
 import AnimePageButtons from "../../../widgets/AnimePageWidgets/AnimePageButtons"
 import DetailsMenu from "./DetailsMenu"
+import useFetchAnimeById from "../../../entities/AnimeCard/api/fetchAnimeById"
 
 
 export default function AnimePage() {

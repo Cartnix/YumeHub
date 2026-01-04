@@ -1,4 +1,4 @@
-import type { AnimeCardI } from "../model/AnimeCardI";
+import type { AnimeCardI } from "../types/AnimeCardI";
 
 export default function AnimeCard({ title, year, background, genre, desc }: AnimeCardI) {
     return (
@@ -12,7 +12,7 @@ export default function AnimeCard({ title, year, background, genre, desc }: Anim
                 }}
                 className="
                     relative
-                    h-[350px] w-full
+                    h-[400px] w-full
                     rounded-2xl
                     overflow-hidden
                     transition-all duration-300 ease-in-out
