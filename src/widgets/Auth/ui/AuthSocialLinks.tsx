@@ -1,4 +1,5 @@
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import GithubOAuth from "../../../features/auth/OAuth/GithubOAuth";
 
 export default function AuthSocialLinks() {
     return (
@@ -10,14 +11,8 @@ export default function AuthSocialLinks() {
             </div>
 
             <div className="space-y-4">
-                <button
-                    type="button"
-                    className="flex justify-center items-center gap-4 w-full rounded-lg border border-white/15 bg-white/5 py-2 text-sm text-white transition hover:bg-white/10 active:bg-white/15"
-                >
-                    <FaGithub className="text-xl" />
-                    <span>Continue with GitHub</span>
-                </button>
 
+                <GithubOAuth/>
                 <button
                     type="button"
                     className="flex justify-center items-center gap-4 w-full rounded-lg border border-white/15 bg-white/5 py-2 text-sm text-white transition hover:bg-white/10 active:bg-white/15"

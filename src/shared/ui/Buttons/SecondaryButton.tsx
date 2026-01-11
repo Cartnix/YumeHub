@@ -3,7 +3,6 @@ import { Button, type ButtonProps } from 'antd';
 
 interface SecondaryButtonI extends ButtonProps{
     children: React.ReactNode
-    
 }
 
 export default function SecondaryButtonUI({ children, className, ...props }: SecondaryButtonI) {

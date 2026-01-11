@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import AuthSocialLinks from "./AuthSocialLinks";
-import Registration from "../../../features/registration/ui/Registration";
-import Authorization from "../../../features/auth/ui/Authorization";
+import Registration from "../../../features/auth/registration/ui/Registration";
+import Authorization from "../../../features/auth/login/ui/Authorization";
 
 interface AuthModalProps {
     isOpen: boolean;
@@ -77,7 +77,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = "login" }: Au
                 )}
 
                 {mode === "register" && (
-                    <Registration switchToAuth={() => setMode("login")} />
+                    <Registration switchToLogin={() => setMode("login")} />
                 )}
 
                 <AuthSocialLinks />

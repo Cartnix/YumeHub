@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/home/home";
 import HeaderApp from "../widgets/Header/ui/HeaderApp";
 import { CatalogPage } from "../pages/Catalog";
@@ -14,6 +14,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Catalog" element={<CatalogPage />}/>
           <Route path="/anime/:id" element={<AnimePage />} />
+          <Route path="/auth/callback" element={<Navigate to="/" replace/>}></Route>
         </Routes>
       </>
       <FooterApp />
