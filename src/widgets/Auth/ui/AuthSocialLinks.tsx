@@ -1,5 +1,5 @@
-import { FaGoogle } from "react-icons/fa";
-import GithubOAuth from "../../../features/auth/OAuth/GithubOAuth";
+import GithubOAuth from "../../../features/auth/OAuth/Github/GithubOAuth";
+import GoogleOAuth from "../../../features/auth/OAuth/Google/GoogleOAuth";
 
 export default function AuthSocialLinks() {
     return (
@@ -12,14 +12,8 @@ export default function AuthSocialLinks() {
 
             <div className="space-y-4">
 
-                <GithubOAuth/>
-                <button
-                    type="button"
-                    className="flex justify-center items-center gap-4 w-full rounded-lg border border-white/15 bg-white/5 py-2 text-sm text-white transition hover:bg-white/10 active:bg-white/15"
-                >
-                    <FaGoogle className="text-xl" />
-                    <span>Continue with Google</span>
-                </button>
+                <GithubOAuth />
+                <GoogleOAuth />
             </div>
         </div>
     )

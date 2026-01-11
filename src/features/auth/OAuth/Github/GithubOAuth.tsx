@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../../../shared/api/supabaseClient";
+import { supabase } from "../../../../shared/api/supabaseClient";
 import GithubAuthButton from "./GithubOAuthUI";
 
 export default function GithubOAuth() {
