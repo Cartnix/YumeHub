@@ -1,4 +1,4 @@
-import type { RadioDropDownI } from "../model/types/DropDownType";
+import type { RadioDropDownI } from "../types/DropDownType";
 import DropDown from "../../../shared/ui/DropDown/DropDown";
 import { useState } from "react";
 import { Studios } from "../model/StudioFilterConstants";

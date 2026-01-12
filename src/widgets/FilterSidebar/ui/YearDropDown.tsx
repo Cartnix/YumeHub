@@ -1,6 +1,6 @@
 import { YEARS } from "../model/YearFilterConstants";
 import YearButton from "../../../shared/ui/Buttons/YearButton";
-import type { RadioDropDownI } from "../model/types/DropDownType";
+import type { RadioDropDownI } from "../types/DropDownType";
 import DropDown from "../../../shared/ui/DropDown/DropDown";
 
 

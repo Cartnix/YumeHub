@@ -37,7 +37,7 @@ export default function Authorization({
     return (
         <div onKeyPress={handleKeyPress}>
             <h2 className="mb-6 text-xl font-semibold text-white text-center">
-                Login in
+                Log In
             </h2>
 
             <div className="space-y-4">

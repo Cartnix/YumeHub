@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
-import type { AnimePageI } from "../../../pages/AnimePage/types/AnimePageI"
+import type { Anime } from "../types/AnimePageI"
 
 interface UseFetchAnimeResult {
-  anime: AnimePageI | null
+  anime: Anime | null
   isLoading: boolean
   error: string | null
 }
 
 export default function useFetchAnimeById(id: string): UseFetchAnimeResult {
-  const [anime, setAnime] = useState<AnimePageI | null>(null)
+  const [anime, setAnime] = useState<Anime | null>(null)
   const [isLoading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 

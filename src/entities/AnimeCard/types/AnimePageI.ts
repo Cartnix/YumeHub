@@ -1,6 +1,6 @@
-import type { AnimeCardI } from "../../../entities/AnimeCard/types/AnimeCardI";
+import type { AnimeCardI } from "./AnimeCardI";
 
-export interface AnimePageI extends AnimeCardI{
+export interface Anime extends AnimeCardI{
     rating: number | null;
     episodes: number;
     status: string;
