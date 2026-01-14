@@ -15,7 +15,6 @@ export function useAuth() {
         password,
       })
       if (error) throw error
-      console.log("You're entered")
       return data
     } catch (e: any) {
       setError(e.message)
@@ -35,7 +34,6 @@ export function useAuth() {
         password,
       })
       if (error) throw error
-      console.log("You're registred")
       return data
     } catch (e: any) {
       setError(e.message)

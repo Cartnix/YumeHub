@@ -1,8 +1,11 @@
-export default function LogoIcon()
-{
-    return(
+export default function LogoIcon() {
+    return (
         <>
-            <h1 className="uppercase text-[var(--color-offwhite)] text-4xl">yumehub</h1>
+            <span className="relative uppercase font-semibold text-[var(--color-offwhite)] text-3xl">
+                YUME
+                <span className="absolute -top-1 -right-3 text-xs">✦</span>
+                HUB
+            </span>
         </>
     )
 }
