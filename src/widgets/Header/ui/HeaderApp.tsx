@@ -111,7 +111,7 @@ export default function HeaderApp() {
     console.log('🎨 Рендер Header, user:', user?.email || 'не авторизован');
 
     return (
-        <header className="border-b border-b-[var(--color-gray-1)] absolute top-0 w-full h-[91px]">
+        <header className="z-50 border-b border-b-[var(--color-gray-1)] absolute top-0 w-full h-[91px]">
             <Container>
                 {loading ? (
                     <div className="flex gap-6 items-center py-6 justify-center">

@@ -7,7 +7,7 @@ export default function UserInfo() {
                 <DefaultAvatar size={120} />
             </div>
             <div className="ml-10">
-                <h2 className="text-2xl font-semibold">Name</h2>
+                <h2 className="text-2xl font-bold">Name</h2>
                 <div className="flex gap-5">
                     <span className="text-[var(--color-gray-2)]">number</span>
                     <span className="text-[var(--color-gray-2)]">number</span>
