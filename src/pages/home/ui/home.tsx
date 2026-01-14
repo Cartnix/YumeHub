@@ -1,5 +1,5 @@
-import { Container } from "../../shared/ui/Container";
-import Loader from "../../shared/ui/Loader/Loader";
+import { Container } from "../../../shared/ui/Container";
+import Loader from "../../../shared/ui/Loader/Loader";
 
 export default function HomeApp() {
     return (

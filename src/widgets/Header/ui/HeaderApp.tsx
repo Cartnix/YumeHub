@@ -8,6 +8,7 @@ import NavMenu from "./NavMenu";
 import AuthModal from "../../Auth/ui/AuthModal";
 import { supabase } from "../../../shared/api/supabaseClient";
 import type { User } from "@supabase/supabase-js";
+import AvatarMenu from "./AvatarMenu";
 
 type AuthMode = "login" | "register";
 
@@ -128,7 +129,10 @@ export default function HeaderApp() {
                             </div>
                         ) : (
                             <div className="flex gap-4 items-center ml-auto">
-                                <button onClick={handleLogout}>Выйти</button>
+                                <AvatarMenu/>
+                                <PrimaryButtonUI onClick={handleLogout}>
+                                    Выйти
+                                </PrimaryButtonUI>
                             </div>
                         )}
                     </div>
