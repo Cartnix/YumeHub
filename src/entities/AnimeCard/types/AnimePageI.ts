@@ -10,4 +10,6 @@ export interface Anime extends AnimeCardI{
     studios: string;
     source: string;
     duration: string;
+    genre: string;
+    desc?: string
 }

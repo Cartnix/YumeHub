@@ -21,9 +21,9 @@ const AnimeCardsGrid: FC<Props> = ({ animes, isLoading, hasMore, showMore }) => 
                             id={a.id}
                             title={a.title}
                             year={a.year}
-                            desc={a.desc}
                             background={a.background}
-                            genre={a.genre}
+                            score={a.score}
+                            kind={a.kind}
                         />
                     </Link>
                 ))}

@@ -14,7 +14,10 @@ export default function useFetchAnimeCards() {
         const fetchAnime = async () => {
             try {
                 setLoading(true)
-                const res = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
+                const res = await fetch(
+                    `https://shikimori.one/api/animes?page=${page}&limit=50&order=popularity`
+                )
+
                 if (!res.ok) throw new Error("Failed to fetch anime")
 
                 const json = await res.json()
@@ -23,13 +26,19 @@ export default function useFetchAnimeCards() {
 
                 console.log(json)
 
-                const newData: AnimeCardI[] = json.data.map((item: any) => ({
-                    id: item.mal_id,
-                    title: item.title,
-                    year: item.aired?.prop?.from?.year || 0,
-                    background: item.images?.jpg?.image_url || "",
-                    genre: item.genres?.[0]?.name || "Unknown",
-                    desc: item.synopsis || "",
+                const newData: AnimeCardI[] = json.filter((item: any) => {
+                    return !item.image?.original.includes("missing_original") &&
+                        !item.image?.preview.includes("missing_preview")
+                }).map((item: any) => ({
+                    id: item.id,
+                    title: item.name,
+                    year: item.aired_on ? new Date(item.aired_on).getFullYear() : 0,
+                    score: item.score,
+                    background: item.image?.original
+                        ? `https://shikimori.one${item.image.original}`
+                        : `https://shikimori.one${item.image?.preview || ''}`,
+                    desc: item.description || "",
+                    kind: item.kind,
                 }))
 
                 setData(prev => {
@@ -37,7 +46,8 @@ export default function useFetchAnimeCards() {
                     return [...prev, ...unique]
                 })
 
-                setHasMore(Boolean(json.pagination?.has_next_page))
+                setHasMore(json.length === 50)
+
             } catch (err) {
                 setError(err as Error)
             } finally {
