@@ -1,4 +1,6 @@
 import { Container } from "../../../shared/ui/Container";
+import DetailsMenu from "../../../shared/ui/DetailMenuWidget";
+import { ProfilePageTabs } from "../model/profilePageTabs";
 import UserInfo from "./UserInfo";
 
 export default function ProfilePage() {
@@ -19,7 +21,13 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="mt-10">
-                    test
+                    <DetailsMenu tabs={ProfilePageTabs}>
+                        {(activeTab) => (
+                            <>
+                                {/* {activeTab === 'Watching' && } */}
+                            </>
+                        )}
+                    </DetailsMenu>
                 </div>
             </Container>
         </main>

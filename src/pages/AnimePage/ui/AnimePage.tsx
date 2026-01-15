@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom"
 import { Container } from "../../../shared/ui/Container"
 import { Star } from "lucide-react"
-import AnimePageButtons from "../../../widgets/AnimePageWidgets/AnimePageButtons"
-import DetailsMenu from "./DetailsMenu"
 import useFetchAnimeById from "../../../entities/AnimeCard/api/fetchAnimeById"
-
+import { AnimePageTabs } from "../model/animePageTabs"
+import DetailsMenu from "../../../shared/ui/DetailMenuWidget"
+import Overview from "./Overview"
+import AmimeStatusButtonsUI from "./AnimeStatusButtonsUI"
 
 export default function AnimePage() {
     const { id } = useParams<{ id: string }>()
@@ -44,13 +45,18 @@ export default function AnimePage() {
                                 </div>
                             </div>
 
-                            <AnimePageButtons />
+                            <AmimeStatusButtonsUI/>
 
                         </div>
                     </div>
                 )}
-
-                <DetailsMenu data={anime}/>
+                <DetailsMenu tabs={AnimePageTabs}>
+                    {(activeTab) => (
+                        <>
+                            {activeTab === 'overview' && <Overview data={anime} />}
+                        </>
+                    )}
+                </DetailsMenu>
             </Container>
         </main>
     )
