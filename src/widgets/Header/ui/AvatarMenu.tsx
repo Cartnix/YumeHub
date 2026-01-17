@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { DefaultAvatar } from "../../../shared/ui/Icons/DefaultAvatar";
+import { DefaultAvatar } from "@/shared/ui/Icons/ui/DefaultAvatar";
 
-export default function AvatarMenu() {
+export const AvatarMenu = () => {
 
     return (
         <div>

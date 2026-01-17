@@ -1,8 +1,8 @@
-import useAnimeCatalog from "../model/useAnimeCatalog";
-import AnimeCardSkeleton from "./AnimeCardSekeleton";
+import { useAnimeCatalog } from "../model/useAnimeCatalog";
+import { AnimeCardSkeleton } from "./AnimeCardSekeleton";
 import AnimeCardsGrid from "./AnimeCardsGrid";
 
-export default function AnimeCardWrapper() {
+export const AnimeCardsWrapper = () => {
     const { animes, isLoading, hasMore, showMore } = useAnimeCatalog();
 
     if (isLoading && animes.length === 0) {

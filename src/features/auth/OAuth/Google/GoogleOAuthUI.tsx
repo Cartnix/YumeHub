@@ -5,7 +5,7 @@ interface GoogleOAuthI {
     Submit: () => void
 }
 
-export default function GoogleOAuthButton({isActive, Submit}: GoogleOAuthI) {
+export const GoogleOAuthButton = ({isActive, Submit}: GoogleOAuthI) => {
     return (
         <button
             type="button"

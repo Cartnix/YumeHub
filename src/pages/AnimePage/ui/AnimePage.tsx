@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom"
-import { Container } from "../../../shared/ui/Container"
+import { Container } from "@/shared/ui/Container"
 import { Star } from "lucide-react"
-import useFetchAnimeById from "../../../entities/AnimeCard/api/fetchAnimeById"
-import { AnimePageTabs } from "../model/animePageTabs"
-import DetailsMenu from "../../../shared/ui/DetailMenuWidget"
-import Overview from "./Overview"
-import AmimeStatusButtonsUI from "./AnimeStatusButtonsUI"
+import { DetailsMenu } from "@/shared/ui/DetailMenu/ui/DetailsMenu"
+import { Overview } from "./Overview"
+import { useFetchAnimeById } from "@/entities/anime/api/fetchAnimeById"
+import { animePageTabs } from "../model/animePageTabs"
+import { AmimeStatusButtonsUI } from "./AnimeStatusButtonsUI"
 
-export default function AnimePage() {
+export const AnimePage = () => {
     const { id } = useParams<{ id: string }>()
     const { anime, isLoading } = useFetchAnimeById(id || "")
 
@@ -45,15 +45,17 @@ export default function AnimePage() {
                                 </div>
                             </div>
 
-                            <AmimeStatusButtonsUI/>
+                            <AmimeStatusButtonsUI />
 
                         </div>
                     </div>
                 )}
-                <DetailsMenu tabs={AnimePageTabs}>
+                <DetailsMenu tabs={animePageTabs}>
                     {(activeTab) => (
                         <>
-                            {activeTab === 'overview' && <Overview data={anime} />}
+                            {activeTab === 'overview' && (
+                                <Overview data={anime ? { ...anime, desc: anime.desc ?? "No description available" } : null} />
+                            )}
                         </>
                     )}
                 </DetailsMenu>

@@ -1,0 +1,1 @@
+export { AnimeCardsWrapper } from './ui/AnimeCardsWrapper'

@@ -1,10 +1,10 @@
-import type { OverviewProps } from "../types/OverviewI"
+import type { OverviewProps } from "../model/types/OverviewI"
 
 interface Props {
   data: OverviewProps | null
 }
 
-export default function Overview({ data }: Props) {
+export const Overview = ({ data }: Props) => {
   if (!data) return null
 
   const details = [

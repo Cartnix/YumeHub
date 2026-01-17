@@ -1,7 +1,7 @@
-import { Container } from "../../../shared/ui/Container";
-import Loader from "../../../shared/ui/Loader/Loader";
+import { Container } from "@/shared/ui/Container";
+import { Loader } from "@/shared/ui/Loader/ui/Loader";
 
-export default function HomeApp() {
+export const HomePage = () => {
     return (
         <main className="py-10 pt-[170px]">
             <Container>

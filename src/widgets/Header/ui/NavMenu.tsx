@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export default function NavMenu() {
+export const NavMenu = () => {
     const links = [
         { to: "/", label: "Home" },
         { to: "/catalog", label: "Catalog" },

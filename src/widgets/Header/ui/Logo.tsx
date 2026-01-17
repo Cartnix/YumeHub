@@ -1,4 +1,4 @@
-export default function LogoIcon() {
+export const LogoIcon = () => {
     return (
         <>
             <span className="relative uppercase font-semibold text-[var(--color-offwhite)] text-3xl">

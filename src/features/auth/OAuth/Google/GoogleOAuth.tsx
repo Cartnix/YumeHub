@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { supabase } from "../../../../shared/api/supabaseClient";
-import GoogleOAuthButton from "./GoogleOAuthUI";
+import { supabase } from "@/shared/api/supabaseClient";
+import { GoogleOAuthButton } from "./GoogleOAuthUI";
 
-export default function GoogleOAuth() {
+export const GoogleOAuth = () => {
     const [isLogIn, setLogIne] = useState<boolean>(false)
 
     const HandleGoogleLogin = async() => {

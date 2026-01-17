@@ -5,7 +5,7 @@ interface GithubAuthButtonI {
     isActive: boolean
 }
 
-export default function GithubAuthButton({onClick, isActive}: GithubAuthButtonI) {
+export const GithubAuthButton = ({onClick, isActive}: GithubAuthButtonI) => {
     return (
         <button
             type="button"

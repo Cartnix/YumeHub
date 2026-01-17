@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { supabase } from '../../shared/api/supabaseClient'
+import { supabase } from '@/shared/api/supabaseClient'
 
-export function useAuth() {
+export const useAuth = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 

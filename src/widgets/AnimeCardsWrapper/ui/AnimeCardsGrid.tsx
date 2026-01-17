@@ -1,8 +1,8 @@
 import type { FC } from "react";
-import AnimeCard from "../../../entities/AnimeCard/ui/AnimeCard";
-import type { AnimeCardI } from "../../../entities/AnimeCard/types/AnimeCardI";
-import LoaderOverlay from "../../../shared/ui/Loader/LoaderOverlay";
+import type { AnimeCardI } from "@/entities/anime/AnimeCard/types/AnimeCardI";
 import { Link } from "react-router-dom";
+import { AnimeCard } from "@/entities/anime/AnimeCard";
+import { LoaderOverlay } from "@/shared/ui/Loader";
 
 interface Props {
     animes: AnimeCardI[];

@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
-import PrimaryButtonUI from "../../../shared/ui/Buttons/PrimaryButton";
-import SecondaryButtonUI from "../../../shared/ui/Buttons/SecondaryButton";
-import { Container } from "../../../shared/ui/Container";
-import InputUI from "../../../shared/ui/Input/Input";
-import LogoIcon from "./Logo";
-import NavMenu from "./NavMenu";
-import AuthModal from "../../Auth/ui/AuthModal";
-import { supabase } from "../../../shared/api/supabaseClient";
+import { Container } from "@/shared/ui/Container";
+import { supabase } from "@/shared/api/supabaseClient";
 import type { User } from "@supabase/supabase-js";
-import AvatarMenu from "./AvatarMenu";
+import { AvatarMenu } from "./AvatarMenu";
+import { AuthModal } from "@/widgets/Auth";
+import { LogoIcon } from "./Logo";
+import { NavMenu } from "./NavMenu";
+import { PrimaryButton, SecondaryButton } from "@/shared/ui/Buttons";
+import { Input } from "@/shared/ui/Input";
 
 type AuthMode = "login" | "register";
 
-export default function HeaderApp() {
+export const HeaderApp = () => {
     const [isOpen, setOpen] = useState(false);
     const [mode, setMode] = useState<AuthMode>("login");
     const [user, setUser] = useState<User | null>(null);
@@ -121,18 +120,18 @@ export default function HeaderApp() {
                     <div className="flex gap-6 items-center py-6">
                         <LogoIcon />
                         <NavMenu />
-                        <InputUI placeholder="Search..." type="text" withIcon />
+                        <Input placeholder="Search..." type="text" withIcon />
                         {!user ? (
                             <div className="flex gap-3 ml-auto">
-                                <PrimaryButtonUI onClick={openLogin}>Log In</PrimaryButtonUI>
-                                <SecondaryButtonUI onClick={openRegister}>Get Started</SecondaryButtonUI>
+                                <PrimaryButton onClick={openLogin}>Log In</PrimaryButton>
+                                <SecondaryButton onClick={openRegister}>Get Started</SecondaryButton>
                             </div>
                         ) : (
                             <div className="flex gap-4 items-center ml-auto">
-                                <AvatarMenu/>
-                                <PrimaryButtonUI onClick={handleLogout}>
+                                <AvatarMenu />
+                                <PrimaryButton onClick={handleLogout}>
                                     Выйти
-                                </PrimaryButtonUI>
+                                </PrimaryButton>
                             </div>
                         )}
                     </div>

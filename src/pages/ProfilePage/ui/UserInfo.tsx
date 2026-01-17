@@ -1,6 +1,6 @@
-import { DefaultAvatar } from "../../../shared/ui/Icons/DefaultAvatar";
+import { DefaultAvatar } from "@/shared/ui/Icons/ui/DefaultAvatar";
 
-export default function UserInfo() {
+export const UserInfo = () => {
     return (
         <div className="flex items-center">
             <div>

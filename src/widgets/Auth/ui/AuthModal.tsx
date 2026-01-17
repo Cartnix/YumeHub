@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import AuthSocialLinks from "./AuthSocialLinks";
-import Registration from "../../../features/auth/registration/ui/Registration";
-import Authorization from "../../../features/auth/login/ui/Authorization";
+import { Authorization } from "@/features/auth/login/Authorization";
+import { Registration } from "@/features/auth/registration/ui/Registration";
+import { AuthSocialLinks } from "./AuthSocialLinks";
 
 interface AuthModalProps {
     isOpen: boolean;
@@ -10,7 +10,7 @@ interface AuthModalProps {
     initialMode?: "login" | "register";
 }
 
-export default function AuthModal({ isOpen, onClose, initialMode = "login" }: AuthModalProps) {
+export const AuthModal = ({ isOpen, onClose, initialMode = "login" }: AuthModalProps) => {
     const [mode, setMode] = useState<"login" | "register">(initialMode);
 
     useEffect(() => {

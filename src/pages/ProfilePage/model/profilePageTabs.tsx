@@ -1,10 +1,12 @@
-import Collections from "../../../shared/ui/AnimeStatus/Collections";
-import ToWatch from "../../../shared/ui/AnimeStatus/ToWatch";
-import Watched from "../../../shared/ui/AnimeStatus/Watched";
-import Watching from "../../../shared/ui/AnimeStatus/Watching";
-import type { TabsI } from "../../../shared/ui/DetailMenuWidget";
+import {
+    Watching, 
+    Watched,
+    ToWatch,
+    Collections
+} from '@/shared/ui/AnimeStatus'
+import type { TabsI } from "@/shared/ui/DetailMenu/ui/DetailsMenu";
 
-export const ProfilePageTabs: TabsI[] = [
+export const profilePageTabs: TabsI[] = [
     { id: 'watching', label: <Watching /> },
     { id: 'to_watch', label: <ToWatch /> },
     { id: 'watched', label: <Watched /> },

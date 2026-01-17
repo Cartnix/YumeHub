@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { supabase } from "../../../../shared/api/supabaseClient";
-import GithubAuthButton from "./GithubOAuthUI";
+import { supabase } from "@/shared/api/supabaseClient";
+import { GithubAuthButton } from "./GithubOAuthUI";
 
-export default function GithubOAuth() {
+export const GithubOAuth = () => {
     const [isLogIn, setLogIne] = useState<boolean>(false)
 
     const HandleGithubLogin = async() => {

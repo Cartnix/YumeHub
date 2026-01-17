@@ -1,4 +1,4 @@
-export default function AnimeCardSkeleton() {
+export const AnimeCardSkeleton = () => {
     return (
         <div className="animate-pulse bg-[#1a1a1a] rounded-xl overflow-hidden h-[380px] w-full border border-white/5">
             <div className="relative h-full w-full bg-[#242424]">

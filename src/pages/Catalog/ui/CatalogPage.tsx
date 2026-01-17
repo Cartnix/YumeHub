@@ -1,33 +1,20 @@
-import { Container } from "../../../shared/ui/Container";
-import AnimeCardWrapper from "../../../widgets/AnimeCardsWrapper/ui/AnimeCardsWrapper";
-import { AiringDropDown } from "../../../widgets/FilterSidebar/ui/AiringDropDown";
-import { FormatDropDown } from "../../../widgets/FilterSidebar/ui/FormatDropDown";
-import { GenreDropDown } from "../../../widgets/FilterSidebar/ui/GenreDropDown";
-import { SeasonDropDown } from "../../../widgets/FilterSidebar/ui/SeasonDropDown";
-import { StudioDropDown } from "../../../widgets/FilterSidebar/ui/StudioDropDown";
-import { YearDropDown } from "../../../widgets/FilterSidebar/ui/YearDropDown";
+import { Container } from "@/shared/ui/Container";
+import { AnimeCardsWrapper } from "@/widgets/AnimeCardsWrapper";
+import { AnimeFilters } from "@/widgets/AnimeFilters/ui/AnimeFilters";
 
-export default function CatalogPage() {
+export const CatalogPage = () => {
     return (
         <main className="pt-[170px]">
             <Container>
                 <h1 className="text-3xl font-bold mb-6">Catalog</h1>
                 <div className="grid grid-cols-[200px_1fr]">
-                    <aside>
-                        <div className="flex flex-col gap-6">
-                            <YearDropDown title="Year" />
-                            <SeasonDropDown title="Season" />
-                            <GenreDropDown title="Genre" />
-                            <StudioDropDown title="Studio"/>
-                            <FormatDropDown title="Format"/>
-                            <AiringDropDown title="Airing Status"/>
-                        </div>
-                    </aside>
+                    <AnimeFilters />
                     <section className="ml-6">
-                        <AnimeCardWrapper />
+                        <AnimeCardsWrapper />
                     </section>
                 </div>
             </Container>
         </main>
     )
 }
+

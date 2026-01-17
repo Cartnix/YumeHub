@@ -1,7 +1,7 @@
-import GithubOAuth from "../../../features/auth/OAuth/Github/GithubOAuth";
-import GoogleOAuth from "../../../features/auth/OAuth/Google/GoogleOAuth";
+import { GithubOAuth } from "@/features/auth/OAuth/Github/GithubOAuth"
+import { GoogleOAuth } from "@/features/auth/OAuth/Google/GoogleOAuth"
 
-export default function AuthSocialLinks() {
+export const AuthSocialLinks = () => {
     return (
         <div>
             <div className="my-6 flex items-center gap-3 text-xs text-white/40">

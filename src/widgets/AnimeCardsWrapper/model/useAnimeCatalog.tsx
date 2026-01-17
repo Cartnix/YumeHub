@@ -1,7 +1,7 @@
+import { useFetchAnimeCards } from "@/entities/anime/AnimeCard/api/fetchAnimeCards"
 import { useState } from "react"
-import useFetchAnimeCards from "../../../entities/AnimeCard/api/fetchAnimeCards"
 
-export default function useAnimeCatalog() {
+export const useAnimeCatalog = () => {
     const { data, error, isLoading, hasMore: remoteHasMore, showMore: fetchMore } = useFetchAnimeCards()
     const [visibleCount, setVisibleCount] = useState(24)
 

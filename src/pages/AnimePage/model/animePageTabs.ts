@@ -1,4 +1,4 @@
-export const AnimePageTabs = [
+export const animePageTabs = [
     { id: 'overview', label: 'Overview' },
     { id: 'relations', label: 'Relations' },
     { id: 'characters', label: 'Characters' },
