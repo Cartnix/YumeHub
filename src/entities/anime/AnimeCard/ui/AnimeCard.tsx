@@ -10,7 +10,7 @@ export const AnimeCard = ({ kind = "Unknown", title, score, background, year }: 
 
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 transition-all duration-500 group-hover:bg-black/75 group-hover:backdrop-blur-[2px]" />
 
-            <div className="absolute inset-x-5 top-5 z-20 flex justify-between items-start">
+            <div className="absolute inset-x-5 top-5 z-5 flex justify-between items-start">
                 {score && (
                     <div className="flex items-center gap-1.5 rounded-2xl bg-black/50 px-3 py-1.5 backdrop-blur-xl border border-white/10">
                         <span className="text-yellow-400 text-xs">★</span>
