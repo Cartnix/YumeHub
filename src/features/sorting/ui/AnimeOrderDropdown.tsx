@@ -1,34 +1,25 @@
-import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState } from "react";
+import type { SortingI } from "../model/types/SortingI";
 
-export const SortDropdown = () => {
-    const [isOpen, setIsOpen] = useState(false);
+export const SortDropdown = ({handleSelect,selected}: SortingI) => {
+    const [isOpen, setIsOpen] = useState(false)
     
-    const [searchParams, setSearchParams] = useSearchParams();
-    
-    const selected = searchParams.get('order') || 'popularity';
-
     const options = [
         { id: 'popularity', label: 'Popularity' },
         { id: 'ranked', label: 'Ranked' },
-        { id: 'aired_on', label: 'Aired On' },
-        { id: 'volumes', label: 'Volumes' },
-        { id: 'chapters', label: 'Chapters' },
         { id: 'name', label: 'Name' },
+        { id: 'episodes ', label: 'Episodes ' },
     ];
 
-    const handleSelect = (id:string) => {
-        const newParams = new URLSearchParams(searchParams);
-        newParams.set('order', id);
-        newParams.set('page', '1');
-        setSearchParams(newParams);
-        setIsOpen(false);
-    };
+    const handleSelectOption = (id: string) => {
+        handleSelect(id)
+        setIsOpen(false)
+    }
 
     return (
         <div className="relative inline-block text-left">
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => setIsOpen(prev => !prev)}
                 className={`cursor-pointer flex items-center gap-2 border-b outline-none focus:outline-none py-2 bg-transparent transition-colors
                     ${isOpen
                         ? "text-[var(--color-offwhite)] border-[var(--color-offwhite)]"
@@ -51,16 +42,16 @@ export const SortDropdown = () => {
             {isOpen && (
                 <>
                     <div
-                        className="fixed inset-0 z-6"
+                        className="fixed inset-0 z-10"
                         onClick={() => setIsOpen(false)}
                     />
 
-                    <div className="absolute right-0 mt-1 w-full bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl z-7 overflow-hidden">
+                    <div className="absolute right-0 mt-1 w-full bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl z-20 overflow-hidden">
                         <div className="py-1">
                             {options.map((option) => (
                                 <button
                                     key={option.id}
-                                    onClick={() => handleSelect(option.id)}
+                                    onClick={() => handleSelectOption(option.id)}
                                     className={`cursor-pointer w-full text-left px-4 py-2 text-sm transition-colors ${
                                         selected === option.id
                                             ? 'bg-zinc-700 text-white font-medium'

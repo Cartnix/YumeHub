@@ -1,7 +1,7 @@
 import { Container } from "@/shared/ui/Container";
 import { AnimeCardsWrapper } from "@/widgets/AnimeCards";
-import { SortDropdown } from "@/widgets/AnimeCards/ui/AnimeOrder";
 import { AnimeFilters } from "@/widgets/AnimeFilters/ui/AnimeFilters";
+import { Sorting } from "@/features/sorting/model/SortingFilter";
 
 export const CatalogPage = () => {
     return (
@@ -9,7 +9,7 @@ export const CatalogPage = () => {
             <Container>
                 <div className="flex justify-between">
                     <h1 className="text-3xl font-bold mb-6">Catalog</h1>
-                    <SortDropdown/>
+                    <Sorting/>
                 </div>
                 <div className="grid grid-cols-[200px_1fr]">
                     <AnimeFilters />
