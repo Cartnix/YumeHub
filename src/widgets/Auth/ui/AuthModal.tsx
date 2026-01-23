@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Authorization } from "@/features/auth/login/Authorization";
 import { Registration } from "@/features/auth/registration/ui/Registration";
 import { AuthSocialLinks } from "./AuthSocialLinks";
+import { useAuthStore } from "@/shared/model/store/useAuthStore";
 
-interface AuthModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-    initialMode?: "login" | "register";
-}
-
-export const AuthModal = ({ isOpen, onClose, initialMode = "login" }: AuthModalProps) => {
-    const [mode, setMode] = useState<"login" | "register">(initialMode);
-
-    useEffect(() => {
-        setMode(initialMode);
-    }, [initialMode]);
+export const AuthModal = () => {
+    const { isOpen, mode, close, setMode } = useAuthStore()
 
     useEffect(() => {
         if (!isOpen) return;
@@ -40,7 +31,7 @@ export const AuthModal = ({ isOpen, onClose, initialMode = "login" }: AuthModalP
     return createPortal(
         <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 overflow-y-auto"
-            onClick={onClose}
+            onClick={close}
         >
             <form
                 className="
@@ -54,7 +45,7 @@ export const AuthModal = ({ isOpen, onClose, initialMode = "login" }: AuthModalP
             >
                 <button
                     type="button"
-                    onClick={onClose}
+                    onClick={close}
                     className="cursor-pointer absolute top-7 right-5 text-white/60 hover:text-white transition"
                 >
                     <svg

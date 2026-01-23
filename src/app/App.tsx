@@ -5,11 +5,13 @@ import { FooterApp } from "../widgets/Footer/ui/FooterApp";
 import { AnimePage } from "../pages/AnimePage/ui/AnimePage";
 import { ProfilePage } from "../pages/ProfilePage";
 import { HomePage } from "../pages/home";
+import { AuthModal } from "@/widgets/Auth";
 
 export const App = () => {
   return (
     <BrowserRouter>
       <HeaderApp />
+      <AuthModal/>
       <>
         <Routes>
           <Route path="/" element={<HomePage />} />

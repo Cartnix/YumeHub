@@ -8,7 +8,7 @@ export const useAuth = () => {
   const signIn = async (email: string, password: string) => {
     setLoading(true)
     setError(null)
-    
+
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
@@ -27,7 +27,7 @@ export const useAuth = () => {
   const signUp = async (email: string, password: string) => {
     setLoading(true)
     setError(null)
-    
+
     try {
       const { data, error } = await supabase.auth.signUp({
         email,

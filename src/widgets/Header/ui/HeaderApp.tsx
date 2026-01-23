@@ -3,53 +3,26 @@ import { Container } from "@/shared/ui/Container";
 import { supabase } from "@/shared/api/supabaseClient";
 import type { User } from "@supabase/supabase-js";
 import { AvatarMenu } from "./AvatarMenu";
-import { AuthModal } from "@/widgets/Auth";
 import { LogoIcon } from "./Logo";
 import { NavMenu } from "./NavMenu";
 import { PrimaryButton, SecondaryButton } from "@/shared/ui/Buttons";
 import { Input } from "@/shared/ui/Input";
-
-type AuthMode = "login" | "register";
+import { useAuthStore } from "@/shared/model/store/useAuthStore";
 
 export const HeaderApp = () => {
-    const [isOpen, setOpen] = useState(false);
-    const [mode, setMode] = useState<AuthMode>("login");
+    const openAuth = useAuthStore((state) => state.open);
+    const closeAuth = useAuthStore((state) => state.close);
+    
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        console.log('🔍 Проверка сессии при загрузке Header');
-
         const getSession = async () => {
             try {
-                const { data: { session }, error } = await supabase.auth.getSession();
-
-                console.log('📦 Session data:', session);
-                console.log('❌ Session error:', error);
-
-                if (error || !session) {
-                    console.log('⚠️ Нет активной сессии');
-                    setUser(null);
-                    setLoading(false);
-                    return;
-                }
-
-                const { data: userData, error: userError } = await supabase.auth.getUser();
-
-                console.log('👤 User data:', userData);
-                console.log('❌ User error:', userError);
-
-                if (userError || !userData.user) {
-                    console.log('⚠️ Ошибка получения пользователя, выполняем signOut');
-                    await supabase.auth.signOut();
-                    setUser(null);
-                } else {
-                    console.log('✅ Пользователь найден:', userData.user.email);
-                    setUser(userData.user);
-                }
+                const { data: { session } } = await supabase.auth.getSession();
+                setUser(session?.user ?? null);
             } catch (error) {
                 console.error("💥 Ошибка сессии", error);
-                setUser(null);
             } finally {
                 setLoading(false);
             }
@@ -57,57 +30,21 @@ export const HeaderApp = () => {
 
         getSession();
 
-        const { data: { subscription } } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
-                console.log('🔔 Auth state changed:', event);
-                console.log('📦 New session:', session);
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+            console.log("Auth event", event)
+            setUser(session?.user ?? null);
 
-                if (event === 'SIGNED_OUT' || !session) {
-                    console.log('👋 Пользователь вышел');
-                    setUser(null);
-                } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-                    console.log('👤 Пользователь вошёл:', session.user.email);
-                    setUser(session.user);
-                    setOpen(false);
-                }
+            if(event == "SIGNED_IN" || event == "TOKEN_REFRESHED") {
+                closeAuth()
             }
-        );
+        });
 
-        return () => {
-            console.log('Отписка от auth changes');
-            subscription.unsubscribe();
-        };
-    }, []);
-
-    const openLogin = () => {
-        console.log('🔓 Открытие окна входа');
-        setMode("login");
-        setOpen(true);
-    };
-
-    const openRegister = () => {
-        console.log('📝 Открытие окна регистрации');
-        setMode("register");
-        setOpen(true);
-    };
-
-    const closeModal = () => {
-        console.log('❌ Закрытие модального окна');
-        setOpen(false);
-    };
+        return () => subscription.unsubscribe();
+    }, [closeAuth]);
 
     const handleLogout = async () => {
-        console.log('👋 Начало выхода из системы');
-        const { error } = await supabase.auth.signOut();
-        if (error) {
-            console.error('❌ Ошибка выхода:', error);
-        } else {
-            console.log('✅ Успешный выход');
-        }
+        await supabase.auth.signOut();
     };
-
-
-    console.log('🎨 Рендер Header, user:', user?.email || 'не авторизован');
 
     return (
         <header className="z-50 border-b border-b-[var(--color-gray-1)] absolute top-0 w-full h-[91px]">
@@ -121,24 +58,27 @@ export const HeaderApp = () => {
                         <LogoIcon />
                         <NavMenu />
                         <Input placeholder="Search..." type="text" withIcon />
+                        
                         {!user ? (
                             <div className="flex gap-3 ml-auto">
-                                <PrimaryButton onClick={openLogin}>Log In</PrimaryButton>
-                                <SecondaryButton onClick={openRegister}>Get Started</SecondaryButton>
+                                <PrimaryButton onClick={() => openAuth("login")}>
+                                    Log In
+                                </PrimaryButton>
+                                <SecondaryButton onClick={() => openAuth("register")}>
+                                    Get Started
+                                </SecondaryButton>
                             </div>
                         ) : (
                             <div className="flex gap-4 items-center ml-auto">
                                 <AvatarMenu />
                                 <PrimaryButton onClick={handleLogout}>
-                                    Выйти
+                                    Quit
                                 </PrimaryButton>
                             </div>
                         )}
                     </div>
                 )}
             </Container>
-
-            {isOpen && <AuthModal isOpen={isOpen} onClose={closeModal} initialMode={mode} />}
         </header>
     );
 }
