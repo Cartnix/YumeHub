@@ -9,7 +9,7 @@ export const YearFilter = ({ title }: RadioDropDownI) => {
     const [selectedYears, setSelectedYears] = useState<number[]>([])
 
     const toggleYear = (year: number) => {
-        setSelectedYears(prev => prev.includes(year) ? prev.filter(y => y != year) : [...prev, year])
+        setSelectedYears(prev => prev.includes(year) ? prev.filter(y => y !== year) : [...prev, year])
     }
 
     return (

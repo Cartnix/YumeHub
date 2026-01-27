@@ -9,10 +9,17 @@ export const Sorting = () => {
         const newParams = new URLSearchParams(searchParams);
         newParams.set('order', id);
         newParams.set('page', '1');
+
+        if (id === 'aired_on') {
+            newParams.set('status', 'released')
+        } else {
+            newParams.delete('status')
+        }
+
         setSearchParams(newParams);
     };
 
     return (
-        <SortDropdown handleSelect={handleSelect} selected={selected}/>
+        <SortDropdown handleSelect={handleSelect} selected={selected} />
     )
 }

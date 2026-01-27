@@ -3,15 +3,19 @@ import type { AnimeCardI } from "@/entities/anime/AnimeCard/types/AnimeCardI";
 import { Link } from "react-router-dom";
 import { AnimeCard } from "@/entities/anime/AnimeCard";
 import { LoaderOverlay } from "@/shared/ui/Loader";
+import { useLoader } from "@/shared/model/store/useLoader";
 
 interface Props {
     animes: AnimeCardI[];
-    isLoading: boolean;
     hasMore: boolean;
     showMore: () => void;
 }
 
-const AnimeCardsGrid: FC<Props> = ({ animes, isLoading, hasMore, showMore }) => {
+
+export const AnimeCardsGrid: FC<Props> = ({ animes, hasMore, showMore }) => {
+    
+    const isLoading = useLoader(state => state.isLoading)
+
     return (
         <>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4 justify-start">
@@ -45,4 +49,3 @@ const AnimeCardsGrid: FC<Props> = ({ animes, isLoading, hasMore, showMore }) => 
     );
 };
 
-export default AnimeCardsGrid;

@@ -8,13 +8,16 @@ import { NavMenu } from "./NavMenu";
 import { PrimaryButton, SecondaryButton } from "@/shared/ui/Buttons";
 import { Input } from "@/shared/ui/Input";
 import { useAuthStore } from "@/shared/model/store/useAuthStore";
+import { useLoader } from "@/shared/model/store/useLoader";
+import { HeaderSkeleton } from "./HeaderSkeletone";
 
 export const HeaderApp = () => {
     const openAuth = useAuthStore((state) => state.open);
     const closeAuth = useAuthStore((state) => state.close);
-    
+
     const [user, setUser] = useState<User | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+    const loading = useLoader(state => state.isLoading)
+    const setLoading = useLoader(state => state.setLoading)
 
     useEffect(() => {
         const getSession = async () => {
@@ -34,7 +37,7 @@ export const HeaderApp = () => {
             console.log("Auth event", event)
             setUser(session?.user ?? null);
 
-            if(event == "SIGNED_IN" || event == "TOKEN_REFRESHED") {
+            if (event == "SIGNED_IN" || event == "TOKEN_REFRESHED") {
                 closeAuth()
             }
         });
@@ -50,15 +53,13 @@ export const HeaderApp = () => {
         <header className="z-50 border-b border-b-[var(--color-gray-1)] absolute top-0 w-full h-[91px]">
             <Container>
                 {loading ? (
-                    <div className="flex gap-6 items-center py-6 justify-center">
-                        <span className="text-gray-500">Загрузка...</span>
-                    </div>
+                    <HeaderSkeleton />
                 ) : (
                     <div className="flex gap-6 items-center py-6">
                         <LogoIcon />
                         <NavMenu />
                         <Input placeholder="Search..." type="text" withIcon />
-                        
+
                         {!user ? (
                             <div className="flex gap-3 ml-auto">
                                 <PrimaryButton onClick={() => openAuth("login")}>

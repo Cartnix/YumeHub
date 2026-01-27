@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import type { AnimeCardI } from "../types/AnimeCardI"
+import { useLoader } from "@/shared/model/store/useLoader"
 
 export const useFetchAnimeCards = () => {
     const [data, setData] = useState<AnimeCardI[]>([])
     const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
-    const [isLoading, setLoading] = useState(false)
     const [error, setError] = useState<Error | null>(null)
+    const isLoading = useLoader(state => state.isLoading)
+    const setLoading = useLoader(state => state.setLoading)
 
     const [searchParams] = useSearchParams()
     const order = searchParams.get('order') || 'popularity'
+    const status = searchParams.get('status')
 
     useEffect(() => {
         setPage(1)
         setData([])
-    }, [order])
+        setHasMore(true)
+    }, [order, status])
 
     useEffect(() => {
         let ignore = false
@@ -23,8 +27,20 @@ export const useFetchAnimeCards = () => {
         const fetchAnime = async () => {
             try {
                 setLoading(true)
+
+                const params = new URLSearchParams({
+                    page: page.toString(),
+                    limit: '50',
+                    order: order,
+                    ...(order !== 'id' && { order_by: 'id' })
+                })
+
+                if (status) {
+                    params.append('status', status)
+                }
+
                 const res = await fetch(
-                    `https://shikimori.one/api/animes?page=${page}&limit=50&order=${order}`
+                    `https://shikimori.one/api/animes?${params.toString()}`
                 )
 
                 if (!res.ok) throw new Error("Failed to fetch anime")
@@ -35,7 +51,7 @@ export const useFetchAnimeCards = () => {
                 const newData: AnimeCardI[] = json
                     .filter((item: any) => {
                         return !item.image?.original.includes("missing_original") &&
-                               !item.image?.preview.includes("missing_preview")
+                            !item.image?.preview.includes("missing_preview")
                     })
                     .map((item: any) => ({
                         id: item.id,
@@ -51,8 +67,9 @@ export const useFetchAnimeCards = () => {
 
                 setData(prev => {
                     if (page === 1) return newData
-                    
-                    const unique = newData.filter(item => !prev.some(p => p.id === item.id))
+
+                    const existingIds = new Set(prev.map(item => item.id))
+                    const unique = newData.filter(item => !existingIds.has(item.id))
                     return [...prev, ...unique]
                 })
 
@@ -70,11 +87,12 @@ export const useFetchAnimeCards = () => {
         return () => {
             ignore = true
         }
-    }, [page, order]) 
+    }, [page, order, status])
 
     const showMore = () => {
         if (hasMore && !isLoading) setPage(prev => prev + 1)
     }
 
-    return { data, isLoading, error, hasMore, showMore }
+
+    return { data, error, hasMore, showMore }
 }

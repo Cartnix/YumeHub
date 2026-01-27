@@ -6,13 +6,15 @@ import { AnimePage } from "../pages/AnimePage/ui/AnimePage";
 import { ProfilePage } from "../pages/ProfilePage";
 import { HomePage } from "../pages/home";
 import { AuthModal } from "@/widgets/Auth";
+import { LoaderOverlay } from "@/shared/ui/Loader";
 
 export const App = () => {
   return (
     <BrowserRouter>
       <HeaderApp />
-      <AuthModal/>
+      <AuthModal />
       <>
+        <LoaderOverlay />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Catalog" element={<CatalogPage />} />

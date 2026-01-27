@@ -8,7 +8,7 @@ export const SortDropdown = ({handleSelect,selected}: SortingI) => {
         { id: 'popularity', label: 'Popularity' },
         { id: 'ranked', label: 'Ranked' },
         { id: 'name', label: 'Name' },
-        { id: 'episodes ', label: 'Episodes ' },
+        { id: 'episodes', label: 'Episodes ' },
     ];
 
     const handleSelectOption = (id: string) => {
