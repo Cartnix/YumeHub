@@ -1,9 +1,8 @@
 export const formats = [
-  "TV",
-  "Movie",
-  "OVA",
-  "Special",
-  "ONA",
-  "Music",
-  "TV Special"
+  { label: "TV", value: "tv" },
+  { label: "Movie", value: "movie" },
+  { label: "OVA", value: "ova" },
+  { label: "ONA", value: "ona" },
+  { label: "Special", value: "special" },
+  { label: "Music", value: "music" }
 ]

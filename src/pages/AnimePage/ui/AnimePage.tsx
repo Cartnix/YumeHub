@@ -9,11 +9,17 @@ import { AmimeStatusButtonsUI } from "./AnimeStatusButtonsUI"
 
 export const AnimePage = () => {
     const { id } = useParams<{ id: string }>()
-    const { anime, isLoading } = useFetchAnimeById(id || "")
+    const { data: anime, isLoading, isError, error } = useFetchAnimeById(id || "")
 
     return (
         <main className="py-10 pt-[170px] min-h-screen bg-[var(--color-dark-1)] text-[var(--color-offwhite)]">
             <Container>
+                {isError && (
+                    <div className="text-center mt-10 text-lg text-white/70 animate-pulse">
+                        Error: {error instanceof Error ? error.message : "Something went wrong"}
+                    </div>
+                )}
+
                 {isLoading ? (
                     <div className="text-center mt-10 text-lg text-white/70 animate-pulse">
                         Loading...

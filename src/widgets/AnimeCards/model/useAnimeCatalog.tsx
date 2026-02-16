@@ -1,33 +1,64 @@
-import { useFetchAnimeCards } from "@/entities/anime/AnimeCard/api/fetchAnimeCards"
+import { useFetchAnimeCards } from "@/entities/anime/api/fetchAnimeCards"
 import { useLoader } from "@/shared/model/store/useLoader"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 export const useAnimeCatalog = () => {
     const { data, error, hasMore: remoteHasMore, showMore: fetchMore } = useFetchAnimeCards()
     const [visibleCount, setVisibleCount] = useState(24)
-    const [isFetching, setIsFetching] = useState(false) 
+    const [isFetching, setIsFetching] = useState(false)
     const isLoading = useLoader(state => state.isLoading)
+    const hasInitiallyFetchedRef = useRef(false)
+    
     const animes = data.slice(0, visibleCount)
     const hasMore = visibleCount < data.length || remoteHasMore
 
     useEffect(() => {
-        const fetchWithDelay = async () => {
-            if (remoteHasMore && !isLoading && data.length < visibleCount && !isFetching) {
+        const needsInitialData = data.length === 0 && !hasInitiallyFetchedRef.current
+        
+        if (needsInitialData && remoteHasMore && !isLoading && !isFetching) {
+            console.log('🚀 Initial load: fetching first batch')
+            hasInitiallyFetchedRef.current = true
+            
+            const fetchInitial = async () => {
                 setIsFetching(true)
-                await new Promise(resolve => setTimeout(resolve, 500))
-                fetchMore()
+                await fetchMore()
                 setIsFetching(false)
             }
+            fetchInitial()
         }
-        fetchWithDelay()
-    }, [visibleCount, remoteHasMore, isLoading, data.length, fetchMore, isFetching])
+    }, [data.length, remoteHasMore, isLoading, isFetching, fetchMore])
+
+    useEffect(() => {
+        const needsMoreData = data.length > 0 && data.length < visibleCount && data.length < 100
+        
+        if (needsMoreData && remoteHasMore && !isLoading && !isFetching) {
+            console.log('📥 Auto-fetching: data.length =', data.length, 'visibleCount =', visibleCount)
+            
+            const fetchWithDelay = async () => {
+                setIsFetching(true)
+                await new Promise(resolve => setTimeout(resolve, 500))
+                await fetchMore()
+                setIsFetching(false)
+            }
+            fetchWithDelay()
+        }
+    }, [data.length, visibleCount, remoteHasMore, isLoading, isFetching, fetchMore])
 
     const showMore = () => {
-        setVisibleCount(prev => prev + 12)
-        if (visibleCount + 12 >= data.length - 12 && remoteHasMore && !isLoading && !isFetching) {
-            setIsFetching(true)
-            fetchMore()
-            setIsFetching(false)
+        const newVisibleCount = visibleCount + 12
+        setVisibleCount(newVisibleCount)
+
+        console.log('👆 Show more clicked: new visibleCount =', newVisibleCount, 'data.length =', data.length)
+
+        const willNeedMore = newVisibleCount >= data.length - 12
+        if (willNeedMore && remoteHasMore && !isLoading && !isFetching) {
+            console.log('📥 Pre-fetching from showMore')
+            const fetchData = async () => {
+                setIsFetching(true)
+                await fetchMore()
+                setIsFetching(false)
+            }
+            fetchData()
         }
     }
 
