@@ -16,7 +16,7 @@ export const useAnimeCatalog = () => {
         const needsInitialData = data.length === 0 && !hasInitiallyFetchedRef.current
         
         if (needsInitialData && remoteHasMore && !isLoading && !isFetching) {
-            console.log('🚀 Initial load: fetching first batch')
+            console.log('Initial load: fetching first batch')
             hasInitiallyFetchedRef.current = true
             
             const fetchInitial = async () => {
@@ -32,7 +32,7 @@ export const useAnimeCatalog = () => {
         const needsMoreData = data.length > 0 && data.length < visibleCount && data.length < 100
         
         if (needsMoreData && remoteHasMore && !isLoading && !isFetching) {
-            console.log('📥 Auto-fetching: data.length =', data.length, 'visibleCount =', visibleCount)
+            console.log('Auto-fetching: data.length =', data.length, 'visibleCount =', visibleCount)
             
             const fetchWithDelay = async () => {
                 setIsFetching(true)
@@ -48,11 +48,11 @@ export const useAnimeCatalog = () => {
         const newVisibleCount = visibleCount + 12
         setVisibleCount(newVisibleCount)
 
-        console.log('👆 Show more clicked: new visibleCount =', newVisibleCount, 'data.length =', data.length)
+        console.log('Show more clicked: new visibleCount =', newVisibleCount, 'data.length =', data.length)
 
         const willNeedMore = newVisibleCount >= data.length - 12
         if (willNeedMore && remoteHasMore && !isLoading && !isFetching) {
-            console.log('📥 Pre-fetching from showMore')
+            console.log('Pre-fetching from showMore')
             const fetchData = async () => {
                 setIsFetching(true)
                 await fetchMore()

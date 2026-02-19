@@ -6,10 +6,10 @@ export const useFetchAnimeCards = () => {
   const [searchParams] = useSearchParams()
   
   const order = searchParams.get('order') || 'popularity'
-  const status = searchParams.get('status')
   const format = searchParams.get('kind')
   const genre = searchParams.get('genre')
-  const airing = searchParams.get('airing')
+  const studio = searchParams.get('studio')
+  const season = searchParams.get('season')
 
   const {
     data,
@@ -20,15 +20,15 @@ export const useFetchAnimeCards = () => {
     isFetchingNextPage,
     isLoading,
   } = useInfiniteQuery({
-    queryKey: ['anime', order, status, format, genre, airing],
+    queryKey: ['anime', order, format, genre, studio, season],
     queryFn: ({ pageParam }) => 
       fetchAnimeCards({ 
         page: pageParam, 
         order, 
-        status, 
         format, 
         genre, 
-        airing 
+        studio,
+        season
       }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {

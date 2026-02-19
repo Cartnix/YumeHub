@@ -5,4 +5,6 @@ export interface FetchAnimeParams {
   format?: string | null
   genre?: string | null
   airing?: string | null
+  studio?: string | null
+  season?: string | null
 }

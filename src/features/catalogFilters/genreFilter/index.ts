@@ -1,1 +1,0 @@
-export { GenreFilter } from './ui/GenreDropDown'

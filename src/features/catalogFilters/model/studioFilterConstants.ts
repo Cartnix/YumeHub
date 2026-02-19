@@ -1,17 +1,7 @@
-export const studios = [
-    "MAPPA",
-    "Wit Studio",
-    "Madhouse",
-    "Bones",
-    "A-1 Pictures",
-    "ufotable",
-    "Kyoto Animation",
-    "Shaft",
-    "Production I.G",
-    "Sunrise",
-    "CloverWorks",
-    "Pierrot",
-    "Toei Animation",
-    "J.C.Staff",
-    "TMS Entertainment"
-]
+export const studioFilterConstants = [
+  { label: 'MAPPA', value: '569' },
+  { label: 'Madhouse', value: '11' },
+  { label: 'A-1 Pictures', value: '511' },
+  { label: 'Ufotable', value: '43' },
+  { label: 'Wit Studio', value: '851' },
+];

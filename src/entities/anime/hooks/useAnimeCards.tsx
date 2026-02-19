@@ -2,13 +2,13 @@ import type { AnimeCardI } from "../types/AnimeCardI"
 import type { AnimeResponse } from "../types/AnimeResponseI"
 import type { FetchAnimeParams } from "../types/FetchAnimeParams"
 
-export const fetchAnimeCards = async ({ 
-  page, 
-  order, 
-  status, 
-  format, 
-  genre, 
-  airing 
+export const fetchAnimeCards = async ({
+  page,
+  order,
+  format,
+  genre,
+  studio,
+  season
 }: FetchAnimeParams): Promise<AnimeCardI[]> => {
   const params = new URLSearchParams({
     page: page.toString(),
@@ -17,17 +17,17 @@ export const fetchAnimeCards = async ({
     ...(order !== 'id' && { order_by: 'id' })
   })
 
-  if (status) params.append('status', status)
   if (format) params.append('kind', format)
   if (genre) params.append('genre', genre)
-  if (airing) params.append('airing', airing)
+  if (studio) params.append('studio', studio)
+  if (season) params.append('season', season)
 
   const res = await fetch(
     `https://shikimori.one/api/animes?${params.toString()}`
   )
 
   if (!res.ok) throw new Error("Failed to fetch anime")
-  
+
   const json: AnimeResponse[] = await res.json()
 
   return json
